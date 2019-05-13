@@ -1,11 +1,23 @@
-image: node:10.15.3
-
+clone:
+  depth: 5
+image: nikolaik/python-nodejs:latest
 pipelines:
   branches:
     '{master}':
       - step:
-        caches:
-          - node
-        name: build and deploy master
-        script:
-          - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          name: build and test
+          image:
+            name: buildasignetch/node-build:latest
+          script:
+            - npm install --unsafe-perm
+            - npm run patternlab:build
+          artifacts:
+            - src/client/public/**
+      - step:
+          name: deploy
+          deployment: production
+          image: buildasignetch/azure-build:latest
+          script:
+            - az login --username $DESIGNER_AZURE_IT_USERNAME --password $DESIGNER_AZURE_IT_PASSWORD
+            # grab environment variables from bitbucket dynamically
+            - az storage blob upload-batch -s src/client/public -d 'etch/styleguide' --account-key $DESIGNER_AZURE_STORAGE_ACCESS_KEY_QA --account-name $DESIGNER_AZURE_STORAGE_ACCOUNT_QA
