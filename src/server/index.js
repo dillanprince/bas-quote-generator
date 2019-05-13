@@ -5,13 +5,13 @@ const app = express();
 // set up express for production
 if (process.env.NODE_ENV === 'production') {
   // express will serve production assets like main.js
-  app.use(express.static('client/build'));
+  app.use(express.static('src/client/build'));
 
   // express will serve the index.html file if it doesn't recognize the route
   const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(
-      path.resolve(__dirname, '..', 'client', 'build', 'index.html')
+      path.resolve(__dirname, '..', 'src', 'client', 'build', 'index.html')
     );
   });
 }
