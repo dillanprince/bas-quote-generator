@@ -10,7 +10,7 @@ pipelines:
             name: buildasignetch/node-build:latest
           script:
             - npm install --unsafe-perm
-            - npm run patternlab:build
+            - npm run build
           artifacts:
             - src/client/public/**
       - step:
