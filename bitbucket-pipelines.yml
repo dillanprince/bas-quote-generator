@@ -12,7 +12,7 @@ pipelines:
             - npm install --unsafe-perm
             - npm run build
           artifacts:
-            - src/client/public/**
+            - src/client/build/**
       - step:
           name: deploy
           deployment: production
@@ -20,4 +20,4 @@ pipelines:
           script:
             - az login --username $DESIGNER_AZURE_IT_USERNAME --password $DESIGNER_AZURE_IT_PASSWORD
             # grab environment variables from bitbucket dynamically
-            - az storage blob upload-batch -s src/client/public -d 'etch/styleguide' --account-key $DESIGNER_AZURE_STORAGE_ACCESS_KEY_QA --account-name $DESIGNER_AZURE_STORAGE_ACCOUNT_QA
+            - az storage blob upload-batch -s src/client/build -d 'etch/styleguide' --account-key $DESIGNER_AZURE_STORAGE_ACCESS_KEY_QA --account-name $DESIGNER_AZURE_STORAGE_ACCOUNT_QA
