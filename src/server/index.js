@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get('api', (req, res) => {
+app.get('/api', (req, res) => {
   console.log('get request to "/" handled.');
 });
 
