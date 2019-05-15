@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
 
 const app = express();
 
@@ -8,7 +9,6 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('src/client/build'));
 
   // express will serve the index.html file if it doesn't recognize the route
-  const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(
       path.resolve(__dirname, '..', 'src', 'client', 'build', 'index.html')
