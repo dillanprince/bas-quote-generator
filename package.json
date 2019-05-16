@@ -4,7 +4,7 @@
   "description": "Pricing quote generator for BuildASign stores.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server/index.js",
+    "start": "node --experimental-modules src/server/index.mjs",
     "start:client:dev": "npm run start --prefix src/client",
     "start:server:dev": "nodemon --experimental-modules src/server/index.mjs",
     "start:dev": "concurrently \"npm run start:server:dev\" \"npm run start:client:dev\"",
