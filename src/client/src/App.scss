@@ -1,8 +1,26 @@
-.App {
-  width: 100vw;
-  height: 100vh;
-  background-color: red;
-  color: black;
+// BASE VALUES
+// Colors
+$color-primary: #13a86a;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
-@import './components/Header/Header.scss';
+.btn-primary,
+.btn-outline-secondary {
+  background-color: $color-primary;
+  border-color: $color-primary;
+  color: #fff;
+  &:hover {
+    background-color: darken($color-primary, 10%);
+    border-color: darken($color-primary, 10%);
+  }
+}
+
+@import './components/Header/Header';
+@import './components/MainForm/MainForm';
+@import './components/QuoteItem/QuoteItem';
+@import './components/QuoteSummary/QuoteSummary';
