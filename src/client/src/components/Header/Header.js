@@ -4,27 +4,27 @@ class Header extends React.Component {
   render() {
     return (
       <header className="primary-header border-bottom">
-        <h1 class="header-primary">BuildASign Quote Generator</h1>
+        <h1 className="header-primary">BuildASign Quote Generator</h1>
         <div className="row">
-          <div className="col-md-4">
-            <select class="custom-select select-store">
-              <option selected>Please Select Store</option>
+          <div className="col-md-4 form-group">
+            <select className="custom-select select-store ">
+              <option defaultValue>Please Select Store</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 form-group">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Please Enter Sign ID"
             />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 form-group">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Please Enter Help ID"
             />
           </div>

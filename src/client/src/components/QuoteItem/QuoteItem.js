@@ -11,16 +11,16 @@ class QuoteItem extends React.Component {
         </div>
         <div className="form-row">
           <div className="col-md-6 form-group">
-            <select class="custom-select">
-              <option selected>Please Select Material</option>
+            <select className="custom-select">
+              <option defaultValue>Please Select Material</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
           </div>
           <div className="col-md-4 form-group">
-            <select class="custom-select">
-              <option selected>Please Select Size</option>
+            <select className="custom-select">
+              <option defaultValue>Please Select Size</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
@@ -32,8 +32,8 @@ class QuoteItem extends React.Component {
             <input type="number" className="form-control" placeholder="QTY" />
           </div>
           <div className="col-md-4 form-group">
-            <select class="custom-select">
-              <option selected>Number of Colors</option>
+            <select className="custom-select">
+              <option defaultValue>Number of Colors</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
@@ -46,7 +46,7 @@ class QuoteItem extends React.Component {
                 className="custom-control-input"
                 id="customCheck1"
               />
-              <label className="custom-control-label" for="customCheck1">
+              <label className="custom-control-label" htmlFor="customCheck1">
                 Double Sided
               </label>
             </div>
@@ -54,15 +54,15 @@ class QuoteItem extends React.Component {
         </div>
         <div className="form-row">
           <div className="col-md-6 form-group">
-            <select class="custom-select">
-              <option selected>Options</option>
+            <select className="custom-select">
+              <option defaultValue>Options</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
           </div>
           <div className="col-md-3 offset-md-3">
-            <button type="button" class="btn btn-outline-danger">
+            <button type="button" className="btn btn-outline-danger">
               Remove Item
             </button>
           </div>

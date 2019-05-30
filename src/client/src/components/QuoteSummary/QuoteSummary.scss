@@ -32,6 +32,9 @@
   &__total {
     display: flex;
     justify-content: space-between;
+    div:last-of-type {
+      text-align: right;
+    }
   }
   &__total {
     padding-top: 10px;

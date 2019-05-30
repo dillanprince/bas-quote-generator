@@ -16,7 +16,7 @@ class QuoteSummary extends React.Component {
               </div>
             </div>
             <div className="quote-summary-item__price">
-              <div className="quote-summary-item__price--total">
+              <div className="quote-summary-item__price--total text-right">
                 <strong>$XX.xx</strong>
               </div>
               <div className="quote-summary-item__price--peritem">
@@ -26,17 +26,17 @@ class QuoteSummary extends React.Component {
           </div>
         </div>
         <div className="quote-summary__promo">
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Enter Promo Code"
               aria-label="Enter Promo Code"
               aria-describedby="button-addon2"
             />
-            <div class="input-group-append">
+            <div className="input-group-append">
               <button
-                class="btn btn-outline-secondary"
+                className="btn btn-outline-secondary"
                 type="button"
                 id="button-addon2">
                 Apply Promo
@@ -48,11 +48,11 @@ class QuoteSummary extends React.Component {
           <div className="quote-summary-prices">
             <div className="quote-summary-prices__subtotal">
               <div>Subtotal:</div>
-              <div>$XX.xx</div>
+              <div className="text-right">$XX.xx</div>
             </div>
             <div className="quote-summary-prices__shipping">
               <div>Delivery:</div>
-              <div>$XX.xx</div>
+              <div className="text-right">$XX.xx</div>
             </div>
             <div className="shipping-options">
               <div className="shipping-options__address">
@@ -65,42 +65,42 @@ class QuoteSummary extends React.Component {
                     />
                   </div>
                   <div className="col-md-6">
-                    <select class="custom-select">
+                    <select className="custom-select">
                       <option value="1">State</option>
                     </select>
                   </div>
                 </div>
               </div>
-              <div class="custom-control custom-radio">
+              <div className="custom-control custom-radio">
                 <input
                   type="radio"
                   id="customRadio1"
                   name="customRadio"
-                  class="custom-control-input"
+                  className="custom-control-input"
                 />
-                <label class="custom-control-label" for="customRadio1">
+                <label className="custom-control-label" htmlFor="customRadio1">
                   Shipping Option 1 ($XX.xx)
                 </label>
               </div>
-              <div class="custom-control custom-radio">
+              <div className="custom-control custom-radio">
                 <input
                   type="radio"
                   id="customRadio2"
                   name="customRadio"
-                  class="custom-control-input"
+                  className="custom-control-input"
                 />
-                <label class="custom-control-label" for="customRadio2">
+                <label className="custom-control-label" htmlFor="customRadio2">
                   Shipping Option 2 ($XX.xx)
                 </label>
               </div>
-              <div class="custom-control custom-radio">
+              <div className="custom-control custom-radio">
                 <input
                   type="radio"
                   id="customRadio3"
                   name="customRadio"
-                  class="custom-control-input"
+                  className="custom-control-input"
                 />
-                <label class="custom-control-label" for="customRadio3">
+                <label className="custom-control-label" htmlFor="customRadio3">
                   Shipping Option 3 ($XX.xx)
                 </label>
               </div>
@@ -111,7 +111,7 @@ class QuoteSummary extends React.Component {
             </div>
             <div className="quote-summary-prices__total border-top bold">
               <div>TOTAL:</div>
-              <div>$XX.xx</div>
+              <div className="text-right">$XX.xx</div>
             </div>
           </div>
         </div>

@@ -6,7 +6,9 @@ class MainForm extends React.Component {
     return (
       <div className="main-form">
         <QuoteItem />
-        <button type="button" class="btn btn-primary btn-lg btn-block">
+        <button
+          type="button"
+          className="btn btn-primary btn-lg btn-block add-another-item">
           + Add Another Item
         </button>
       </div>
