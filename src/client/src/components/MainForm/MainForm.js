@@ -1,10 +1,11 @@
 import React from 'react';
+import QuoteItem from '../QuoteItem/QuoteItem';
 
 class MainForm extends React.Component {
   render() {
     return (
       <div>
-        <img src="https://placecage.com/800/500" alt="" />
+        <QuoteItem />
       </div>
     );
   }

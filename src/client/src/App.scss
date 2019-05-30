@@ -1,8 +1,9 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background-color: red;
-  color: black;
+  img {
+    max-width: 100%;
+  }
 }
 
 @import './components/Header/Header.scss';
