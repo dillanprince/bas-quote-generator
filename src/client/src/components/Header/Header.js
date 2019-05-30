@@ -7,7 +7,7 @@ class Header extends React.Component {
         <h1 class="header-primary">BuildASign Quote Generator</h1>
         <div className="row">
           <div className="col-md-4">
-            <select class="custom-select">
+            <select class="custom-select select-store">
               <option selected>Please Select Store</option>
               <option value="1">One</option>
               <option value="2">Two</option>

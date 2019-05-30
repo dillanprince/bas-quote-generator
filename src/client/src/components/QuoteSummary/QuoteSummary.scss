@@ -12,21 +12,34 @@
   justify-content: space-between;
   padding-bottom: 10px;
   &__item {
+    &--option {
+      font-size: 12px;
+    }
   }
   &__price {
+    &--peritem {
+      font-size: 12px;
+    }
   }
 }
 .quote-summary-prices {
+  > div {
+    padding-bottom: 10px;
+  }
   &__subtotal,
   &__shipping,
   &__tax,
   &__total {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 10px;
   }
   &__total {
     padding-top: 10px;
     font-size: 1.5rem;
+  }
+}
+.shipping-options {
+  &__address {
+    padding-bottom: 10px;
   }
 }
