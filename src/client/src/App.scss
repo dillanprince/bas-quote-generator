@@ -6,4 +6,21 @@
   }
 }
 
-@import './components/Header/Header.scss';
+// Colors
+$color-primary: #13a86a;
+
+.btn-primary,
+.btn-outline-secondary {
+  background-color: $color-primary;
+  border-color: $color-primary;
+  color: #fff;
+  &:hover {
+    background-color: darken($color-primary, 10%);
+    border-color: darken($color-primary, 10%);
+  }
+}
+
+@import './components/Header/Header';
+@import './components/MainForm/MainForm';
+@import './components/QuoteItem/QuoteItem';
+@import './components/QuoteSummary/QuoteSummary';

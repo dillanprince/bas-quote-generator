@@ -4,6 +4,7 @@ class Header extends React.Component {
   render() {
     return (
       <header className="primary-header border-bottom">
+        <h1 class="header-primary">BuildASign Quote Generator</h1>
         <div className="row">
           <div className="col-md-4">
             <select class="custom-select">
