@@ -3,6 +3,11 @@ import path from 'path';
 
 const app = express();
 
+app.get('/api', (req, res) => {
+  console.log('get request to "/" handled.');
+  res.send();
+});
+
 // set up express for production
 if (process.env.NODE_ENV === 'production') {
   // express will serve production assets like main.js
@@ -13,11 +18,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve('src/client/build/index.html'));
   });
 }
-
-app.get('/api', (req, res) => {
-  console.log('get request to "/" handled.');
-  res.send();
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, (err) => {
