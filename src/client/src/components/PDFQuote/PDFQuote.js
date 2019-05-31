@@ -53,7 +53,6 @@ class PDFQuote extends React.Component {
         body { \
           position: relative; \
           width: 21cm;   \
-          height: 29.7cm;  \
           margin: 0 auto;  \
           color: #001028; \
           background: #FFFFFF;  \
@@ -174,6 +173,7 @@ class PDFQuote extends React.Component {
           text-align: center; \
           border-top: 1px solid  #C1CED9; \
           margin-top: 40px; \
+          margin-bottom: 40px; \
         } \
      \
         strong {  \
