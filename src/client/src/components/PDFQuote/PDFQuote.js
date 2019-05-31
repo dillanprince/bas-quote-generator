@@ -36,7 +36,16 @@ class PDFQuote extends React.Component {
     fetch('api/v1/pdf', {
       method: 'post',
       body: '<html><strong>hola mundo</strong></html>'
-    }).then(res =>  res.json());
+    }).then(
+      res => res.arrayBuffer()
+    ).then(data => {
+      const blob = new Blob([data], {type: "application/pdf"});
+      var link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      const currentDate = new Date();
+      link.download = `quote_${currentDate.getFullYear()}${currentDate.getMonth() + 1}${currentDate.getDate()}.pdf`;
+      link.click();
+    });
   }
 }
 
