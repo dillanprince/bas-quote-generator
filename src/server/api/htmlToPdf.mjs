@@ -5,6 +5,10 @@
 import bodyParser from 'body-parser';
 import convert from 'pdf-puppeteer';
 
+const puppeteerArgs = {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+};
+
 const options = { 
     format: 'Letter',
     printBackground: true 
@@ -21,7 +25,7 @@ const onError = (err, res) => {
 };
 
 async function handler(req, res) {
-    convert(req.body, (pdf) => callback(pdf, res), options, null, false).catch((err) => onError(err, res));
+    convert(req.body, (pdf) => callback(pdf, res), options, puppeteerArgs, false).catch((err) => onError(err, res));
 }
 
 export default (app, router) => {
