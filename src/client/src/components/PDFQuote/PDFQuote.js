@@ -22,11 +22,20 @@ class PDFQuote extends React.Component {
         </div>
         <div className="form-row">
           <div className="col-md-6 offset-3">
-            <button className="btn-primary form-control">Create PDF</button>
+            <button className="btn-primary form-control" onClick={this.generatePDF}>Create PDF</button>
           </div>
         </div>
       </>
     );
+  }
+
+  generatePDF(e) {
+    e.preventDefault();
+
+    fetch('https://bas-quote-generator.herokuapp.com/api/v1/pdf', {
+      method: 'post',
+      body: '<html><strong>hola mundo</strong></html>'
+    }).then(res =>  res.json());
   }
 }
 

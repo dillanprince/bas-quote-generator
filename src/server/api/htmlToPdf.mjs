@@ -28,8 +28,21 @@ async function handler(req, res) {
     convert(req.body, (pdf) => callback(pdf, res), options, puppeteerArgs, false).catch((err) => onError(err, res));
 }
 
+const corsSetup = (req, res, next) => {
+    // future: refine this for more security
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'X-Requested-With,[content-type]'
+    );
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+}
+
 export default (app, router) => {
     router.route('/pdf').post(handler);
     app.use(bodyParser.text({ limit: '50mb' }));
     app.use('/api/v1', router);
+    app.use(corsSetup);
 }
