@@ -11,19 +11,29 @@ class QuoteItem extends React.Component {
         </div>
         <div className="form-row">
           <div className="col-md-6 form-group">
-            <select className="custom-select">
-              <option defaultValue>Please Select Material</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select
+              className="custom-select"
+              onChange={(event) => this.props.handleProductChange(event)}>
+              {this.props.currentStore.materials.map((material, i) => {
+                return (
+                  <option value={material.MaterialId} key={i}>
+                    {material.Name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="col-md-4 form-group">
-            <select className="custom-select">
-              <option defaultValue>Please Select Size</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select
+              className="custom-select"
+              onChange={(event) => this.props.handleSizeChange(event)}>
+              {this.props.currentStore.sizes.map((size, i) => {
+                return (
+                  <option value={size.SizeId} key={i}>
+                    {size.Name}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </div>
@@ -34,9 +44,11 @@ class QuoteItem extends React.Component {
           <div className="col-md-4 form-group">
             <select className="custom-select">
               <option defaultValue>Number of Colors</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
             </select>
           </div>
           <div className="col-md-4 form-group">
@@ -61,10 +73,8 @@ class QuoteItem extends React.Component {
               <option value="3">Three</option>
             </select>
           </div>
-          <div className="col-md-3 offset-md-3">
-            <button type="button" className="btn btn-outline-danger">
-              Remove Item
-            </button>
+          <div className="col-md-3 offset-md-3 d-flex align-items-end text-right justify-content-end">
+            <div className="remove-item">&#10006; Remove Item</div>
           </div>
         </div>
       </div>

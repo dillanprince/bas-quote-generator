@@ -15,9 +15,13 @@ class Header extends React.Component {
             <select
               className="custom-select select-store"
               defaultValue="Please Select Store"
-              onChange={() => this.props.showForm()}>
+              onChange={(event) => this.props.handleStoreChange(event)}>
               {this.props.storeDropdownItems.map((store) => {
-                return <option key={store.storeId}>{store.name}</option>;
+                return (
+                  <option value={store.storeId} key={store.storeId}>
+                    {store.name}
+                  </option>
+                );
               })}
               <option defaultValue="Please Select Store">
                 Please Select Store

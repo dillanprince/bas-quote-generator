@@ -21,8 +21,10 @@ class PDFQuote extends React.Component {
           </div>
         </div>
         <div className="form-row">
-          <div className="col-md-6 offset-3">
-            <button className="btn-primary form-control">Create PDF</button>
+          <div className="col-md-4 offset-4">
+            <button className="btn-primary btn-lg btn form-control">
+              Get PDF Quote
+            </button>
           </div>
         </div>
       </>

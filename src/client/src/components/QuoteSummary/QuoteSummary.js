@@ -1,6 +1,20 @@
 import React from 'react';
 
 class QuoteSummary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      promoInput: '',
+      activePromo: ''
+    };
+    this.promoInput = React.createRef();
+  }
+  handleChange = (event) => {
+    this.setState({ promoInput: event.target.value });
+  };
+  handleClick = () => {
+    this.setState({ activePromo: this.state.promoInput });
+  };
   render() {
     return (
       <div className="quote-summary">
@@ -33,16 +47,19 @@ class QuoteSummary extends React.Component {
               placeholder="Enter Promo Code"
               aria-label="Enter Promo Code"
               aria-describedby="button-addon2"
+              onChange={(event) => this.handleChange(event)}
             />
             <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 type="button"
-                id="button-addon2">
+                id="button-addon2"
+                onClick={this.handleClick}>
                 Apply Promo
               </button>
             </div>
           </div>
+          <div>{this.state.activePromo}</div>
         </div>
         <div className="quote-summary__prices">
           <div className="quote-summary-prices">
