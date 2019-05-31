@@ -86,6 +86,9 @@ class PDFQuote extends React.Component {
           padding-bottom: 20px; \
         } \
      \
+        #project { margin-left: 20px; } \
+        #company { margin-right: 20px; } \
+     \
         #project span, \
         #company span { \
           color: #5D6975; \
@@ -115,6 +118,7 @@ class PDFQuote extends React.Component {
         table tr:nth-child(2n-1) td { \
           background: #F5F5F5; \
         } \
+     \
         table tr:last-child td { \
           background: none; \
         } \
@@ -151,8 +155,9 @@ class PDFQuote extends React.Component {
         table td.qty, \
         table td.total { \
           font-size: 1.2em; \
-          font-weight: bold; \
         } \
+     \
+        table td.total span { display: block;} \
      \
         table td.grand { \
           border-top: 1px solid #C1CED9;; \
@@ -251,23 +256,27 @@ class PDFQuote extends React.Component {
                 <td class="total">$800.00</td> \
               </tr> \
               <tr> \
-                <td colspan="3" class="grand total"> \
-                  <strong>Subtotal</strong> \
-                  <strong>Promo</strong> \
-                  <strong>Delivery</strong> \
-                  <strong>Tax</strong> \
+                <td colspan="3" class="grand total" style="font-weight: bold;"> \
+                  <span>Subtotal</span> \
+                  <span>Promo</span> \
+                  <span>Delivery</span> \
+                  <span>Tax</span> \
                 </td> \
                 <td class="grand total"> \
-                    <strong>$6,500.00</strong> \
-                    <strong>-$1,500.00</strong> \
-                    <strong>$6,500.00</strong> \
-                    <strong>$6,500.00</strong> \
+                    <span>$6,500.00</span> \
+                    <span>-$1,500.00</span> \
+                    <span>$6,500.00</span> \
+                    <span>$6,500.00</span> \
                 </td> \
               </tr> \
               <tr> \
-                  <td class="grand total"><a href="#">Order Now!</a></td> \
-                  <td colspan="2" class="grand total" style="font-weight: bolder;">Total</td> \
-                  <td class="grand total"><strong>$6,500.00</strong></td> \
+                  <td colspan="3" class="grand total" style="font-weight: bolder;"> \
+                    <strong style="padding-bottom: 25px;">Total</strong> \
+                  </td> \
+                  <td class="grand total"> \
+                    <strong>$6,500.00</strong> \
+                    <a href="#">Order Now!</a> \
+                  </td> \
               </tr> \
             </tbody> \
           </table> \
