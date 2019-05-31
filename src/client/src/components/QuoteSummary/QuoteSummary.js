@@ -7,24 +7,79 @@ class QuoteSummary extends React.Component {
       promoInput: '',
       activePromo: '',
       showPromo: false,
-      showShippingInfo: false
+      showShippingInfo: false,
+      zipcode: '',
+      stateCode: '',
+      shippingOptions: []
     };
     this.promoInput = React.createRef();
   }
   handleChange = (event) => {
     this.setState({ promoInput: event.target.value });
   };
+
   handleClick = () => {
     this.setState({ activePromo: this.state.promoInput });
     if (this.state.promoInput !== '') {
       this.setState({ showPromo: true });
-    } else if (this.state.activePromo == '') {
+    } else if (this.state.activePromo === '') {
       this.setState({ showPromo: false });
     }
   };
-  handleShowShipping = () => {
-    this.setState({ showShippingInfo: true });
+
+  handleShippingChange = async (event) => {
+    const stateCode = event.target.value;
+    await this.setState({ stateCode });
+
+    if (stateCode.length && this.state.zipcode > 0) {
+      this.getShippingOptions();
+    }
   };
+
+  handleZipcodeChange = async (event) => {
+    const zipcode = event.target.value;
+
+    await this.setState({ zipcode });
+
+    if (
+      Number.parseInt(zipcode) &&
+      zipcode.length === 5 &&
+      this.state.stateCode.length === 2
+    ) {
+      this.getShippingOptions();
+    }
+  };
+
+  getShippingOptions = async () => {
+    const data = {
+      zipCode: this.state.zipcode,
+      state: this.state.stateCode,
+      promoCode: this.state.promoInput,
+      storeId: this.props.storeId,
+      quoteItems: []
+    };
+
+    var res = await fetch(
+      'https://qa.www.buildasign.com/AdminQuoteGenerator/Shipping',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    );
+
+    const shippingOptions = await res.json();
+
+    console.log(shippingOptions);
+
+    this.setState({
+      showShippingInfo: true,
+      shippingOptions: [...shippingOptions]
+    });
+  };
+
   render() {
     return (
       <div className="quote-summary">
@@ -91,18 +146,18 @@ class QuoteSummary extends React.Component {
                       type="text"
                       className="form-control"
                       placeholder="Zipcode"
+                      onChange={this.handleZipcodeChange}
+                      value={this.state.zipcode}
+                      maxLength="5"
                     />
                   </div>
                   <div className="col-md-6">
                     <select
                       className="custom-select"
-                      onChange={this.handleShowShipping}>
-                      <option value="1">Select State</option>
-                      <option value="1">State 1</option>
-                      <option value="1">State 2</option>
-                      <option value="1">State 3</option>
-                      <option value="1">State 4</option>
-                      <option value="1">State 5</option>
+                      onChange={this.handleShippingChange}>
+                      <option>Select State</option>
+                      <option>GA</option>
+                      <option>TX</option>
                     </select>
                   </div>
                 </div>
@@ -111,45 +166,27 @@ class QuoteSummary extends React.Component {
                 className={
                   this.state.showShippingInfo === false ? 'd-none' : 'd-block'
                 }>
-                <div className="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="customRadio1"
-                    name="customRadio"
-                    className="custom-control-input"
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor="customRadio1">
-                    Shipping Option 1 ($XX.xx)
-                  </label>
-                </div>
-                <div className="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="customRadio2"
-                    name="customRadio"
-                    className="custom-control-input"
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor="customRadio2">
-                    Shipping Option 2 ($XX.xx)
-                  </label>
-                </div>
-                <div className="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="customRadio3"
-                    name="customRadio"
-                    className="custom-control-input"
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor="customRadio3">
-                    Shipping Option 3 ($XX.xx)
-                  </label>
-                </div>
+                {this.state.shippingOptions.map((shippingOption, i) => {
+                  return (
+                    <div
+                      className="custom-control custom-radio"
+                      key={shippingOption.VendorDeliveryOptionId}>
+                      <input
+                        type="radio"
+                        id={`customRadio${i}`}
+                        name="customRadio"
+                        className="custom-control-input"
+                        value={shippingOption.VendorDeliveryOptionId}
+                        defaultChecked={shippingOption.IsDefault}
+                      />
+                      <label
+                        className="custom-control-label"
+                        htmlFor={`customRadio${i}`}>
+                        Shipping Option 1 (${shippingOption.Rate})
+                      </label>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="quote-summary-prices__tax">

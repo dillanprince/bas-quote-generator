@@ -149,7 +149,7 @@ class App extends React.Component {
                   <PDFQuote />
                 </div>
                 <div className="col-md-4">
-                  <QuoteSummary />
+                  <QuoteSummary storeId={this.state.currentStore.storeId} />
                 </div>
               </div>
             )}
