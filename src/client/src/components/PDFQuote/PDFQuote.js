@@ -32,7 +32,8 @@ class PDFQuote extends React.Component {
   generatePDF(e) {
     e.preventDefault();
 
-    fetch('https://bas-quote-generator.herokuapp.com/api/v1/pdf', {
+    // path relative to application domain, this will neeed to be absolute when pdf server separated out
+    fetch('api/v1/pdf', {
       method: 'post',
       body: '<html><strong>hola mundo</strong></html>'
     }).then(res =>  res.json());

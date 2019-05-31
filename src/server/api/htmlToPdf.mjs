@@ -42,7 +42,7 @@ const corsSetup = (req, res, next) => {
 
 export default (app, router) => {
     router.route('/pdf').post(handler);
+    app.use(corsSetup);
     app.use(bodyParser.text({ limit: '50mb' }));
     app.use('/api/v1', router);
-    app.use(corsSetup);
 }
