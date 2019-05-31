@@ -5,7 +5,9 @@ class QuoteSummary extends React.Component {
     super(props);
     this.state = {
       promoInput: '',
-      activePromo: ''
+      activePromo: '',
+      showPromo: false,
+      showShippingInfo: false
     };
     this.promoInput = React.createRef();
   }
@@ -14,6 +16,14 @@ class QuoteSummary extends React.Component {
   };
   handleClick = () => {
     this.setState({ activePromo: this.state.promoInput });
+    if (this.state.promoInput !== '') {
+      this.setState({ showPromo: true });
+    } else if (this.state.activePromo == '') {
+      this.setState({ showPromo: false });
+    }
+  };
+  handleShowShipping = () => {
+    this.setState({ showShippingInfo: true });
   };
   render() {
     return (
@@ -59,7 +69,9 @@ class QuoteSummary extends React.Component {
               </button>
             </div>
           </div>
-          <div>{this.state.activePromo}</div>
+          {this.state.showPromo === false ? null : (
+            <div className="promo-applied">{this.state.activePromo}</div>
+          )}
         </div>
         <div className="quote-summary__prices">
           <div className="quote-summary-prices">
@@ -82,44 +94,62 @@ class QuoteSummary extends React.Component {
                     />
                   </div>
                   <div className="col-md-6">
-                    <select className="custom-select">
-                      <option value="1">State</option>
+                    <select
+                      className="custom-select"
+                      onChange={this.handleShowShipping}>
+                      <option value="1">Select State</option>
+                      <option value="1">State 1</option>
+                      <option value="1">State 2</option>
+                      <option value="1">State 3</option>
+                      <option value="1">State 4</option>
+                      <option value="1">State 5</option>
                     </select>
                   </div>
                 </div>
               </div>
-              <div className="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio1"
-                  name="customRadio"
-                  className="custom-control-input"
-                />
-                <label className="custom-control-label" htmlFor="customRadio1">
-                  Shipping Option 1 ($XX.xx)
-                </label>
-              </div>
-              <div className="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio2"
-                  name="customRadio"
-                  className="custom-control-input"
-                />
-                <label className="custom-control-label" htmlFor="customRadio2">
-                  Shipping Option 2 ($XX.xx)
-                </label>
-              </div>
-              <div className="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio3"
-                  name="customRadio"
-                  className="custom-control-input"
-                />
-                <label className="custom-control-label" htmlFor="customRadio3">
-                  Shipping Option 3 ($XX.xx)
-                </label>
+              <div
+                className={
+                  this.state.showShippingInfo === false ? 'd-none' : 'd-block'
+                }>
+                <div className="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio1"
+                    name="customRadio"
+                    className="custom-control-input"
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor="customRadio1">
+                    Shipping Option 1 ($XX.xx)
+                  </label>
+                </div>
+                <div className="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio2"
+                    name="customRadio"
+                    className="custom-control-input"
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor="customRadio2">
+                    Shipping Option 2 ($XX.xx)
+                  </label>
+                </div>
+                <div className="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio3"
+                    name="customRadio"
+                    className="custom-control-input"
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor="customRadio3">
+                    Shipping Option 3 ($XX.xx)
+                  </label>
+                </div>
               </div>
             </div>
             <div className="quote-summary-prices__tax">

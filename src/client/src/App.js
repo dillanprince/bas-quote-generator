@@ -67,7 +67,6 @@ class App extends React.Component {
             sizes: res.Payload,
             quoteItems: [
               ...this.state.currentStore.quoteItems,
-
               {
                 materialId: materialId
               }
