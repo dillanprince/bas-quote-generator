@@ -2,7 +2,7 @@
 
 Begin by cloning the repository to `T:/buildasign/bas-quote-generator`
 
-### Installing
+### Installing 
 
 This repository contains both the server and client modules. Begin by running the following commands:
 
